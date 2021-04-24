@@ -1,0 +1,5 @@
+*.pdf
+**/_build/
+*.beam
+**/deps/
+**/.elixir_ls/
