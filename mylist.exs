@@ -34,32 +34,34 @@ defmodule Main do
   # If the module name is long, create an alias
   import MyList, only: [len: 1, square: 1, map: 2, reduce: 3, mapsum: 2, mapreduce: 4]
 
-  IO.puts len([1, 2, 3, 4])
-  IO.puts len(["a", "b", "c"])
-  IO.puts len([:one, "two", 3])
+  def run do
+    IO.puts len([1, 2, 3, 4])
+    IO.puts len(["a", "b", "c"])
+    IO.puts len([:one, "two", 3])
 
-  IO.inspect square([1, 2, 3, 4])
+    IO.inspect square([1, 2, 3, 4])
 
-  IO.inspect map([1, 2, 3, 4], fn x -> x + 1 end)
-  IO.inspect map([1, 2, 3, 4], &(&1*&1))
+    IO.inspect map([1, 2, 3, 4], fn x -> x + 1 end)
+    IO.inspect map([1, 2, 3, 4], &(&1*&1))
 
-  # Using anonymous function "full" syntax
-  IO.inspect reduce([1, 2, 3, 4], 0, fn (a, b) -> a + b end)
+    # Using anonymous function "full" syntax
+    IO.inspect reduce([1, 2, 3, 4], 0, fn (a, b) -> a + b end)
 
-  # Using anonymous function "capture operatori/shorthand" syntax
-  IO.inspect reduce([1, 2, 3, 4], 1, &(&1*&2))
+    # Using anonymous function "capture operatori/shorthand" syntax
+    IO.inspect reduce([1, 2, 3, 4], 1, &(&1*&2))
 
-  # Using ranges e pipes
-  1..10 |> reduce(1, &(&1*&2)) |> IO.inspect
+    # Using ranges e pipes
+    1..10 |> reduce(1, &(&1*&2)) |> IO.inspect
 
-  # Mapsum using pipes
-  IO.inspect mapsum([1, 2, 3, 4], &(&1*&1))
-  IO.inspect mapsum([1, 2, 3, 4], &(&1+1))
-  IO.inspect mapsum([1, 2, 3, 4], &(&1*10))
-  IO.inspect mapsum(1..4, &(&1*&1))
-  IO.inspect mapsum(1..4, &(&1+1))
-  IO.inspect mapsum(1..4, &(&1*10))
+    # Mapsum using pipes
+    IO.inspect mapsum([1, 2, 3, 4], &(&1*&1))
+    IO.inspect mapsum([1, 2, 3, 4], &(&1+1))
+    IO.inspect mapsum([1, 2, 3, 4], &(&1*10))
+    IO.inspect mapsum(1..4, &(&1*&1))
+    IO.inspect mapsum(1..4, &(&1+1))
+    IO.inspect mapsum(1..4, &(&1*10))
 
-  IO.inspect mapreduce(1..4, 0, &(&1*&1), &(&1+&2))
-  IO.inspect mapreduce(1..4, 1, &(&1*&1), &(&1*&2))
+    IO.inspect mapreduce(1..4, 0, &(&1*&1), &(&1+&2))
+    IO.inspect mapreduce(1..4, 1, &(&1*&1), &(&1*&2))
+  end
 end
